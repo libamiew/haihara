@@ -1,0 +1,39 @@
+<article class="{{post_class}} post-card post-card-big {{^if feature_image}}no-image{{/if}}">
+    <div class="content">
+        <div class="content-holder">
+            <time class="post-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMMM D, YYYY"}}</time>
+            <div class="title-holder">
+                <h2 class="post-title"><a href="{{url}}" title="{{title}}">{{title}}</a></h2>
+                {{#if authors}}
+                    {{#foreach authors limit="1"}}
+                        {{#if profile_image}}
+                            <figure class="author-image">
+                                <a class="img" href="{{url}}" title="{{name}}"><img src="{{img_url profile_image size="xs"}}" alt="{{name}}"></a>
+                            </figure>
+                        {{/if}}
+                    {{/foreach}}
+                {{/if}}
+            </div>
+            <p>
+                {{excerpt words="100"}}
+            </p>
+            <a href="{{url}}" title="{{title}}" class="read-more">{{t "Read more"}}</a>
+        </div>
+        {{#if feature_image}}
+        <div class="img-holder">
+            <a href="{{url}}" title="{{title}}">
+                <span style="background-image: url({{img_url feature_image size="m"}})"></span>
+            </a>
+            {{#if tags}}
+                <ul class="tags">
+                {{#foreach tags}}
+                    <li>
+                        <a href="{{url}}" title="{{name}}" class="tag tag-{{id}} {{slug}}">{{name}}</a>
+                    </li>  
+                {{/foreach}}
+                </ul>
+            {{/if}}
+        </div>
+        {{/if}}
+    </div>
+</article>
